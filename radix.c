@@ -1,5 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 10:02:19 by bakarabu          #+#    #+#             */
+/*   Updated: 2025/03/20 12:28:45 by bakarabu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
 int	max_bits(t_list **stack)
 {
@@ -49,10 +60,10 @@ void	ft_radix_sort(t_list **stack_a, t_list **stack_b, int size)
 	}
 }
 
-void    ft_sort(t_list **stack_a, t_list **stack_b, int size)
+void	ft_sort(t_list **stack_a, t_list **stack_b, int size)
 {
-    if(size < 10)
-        ft_short_sort(stack_a, stack_b, size);
-    else
-        ft_radix_sort(stack_a, stack_b, size);
+	if (size < 10)
+		ft_short_sort(stack_a, stack_b, size);
+	else
+		ft_radix_sort(stack_a, stack_b, size);
 }

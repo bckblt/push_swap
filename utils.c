@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 10:02:27 by bakarabu          #+#    #+#             */
+/*   Updated: 2025/03/20 12:50:40 by bakarabu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	count_word(char *a, char b)
@@ -52,13 +64,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (a);
 }
 
-static void	free_all(char **result, int index)
-{
-	while (index >= 0)
-		free(result[index--]);
-	free(result);
-}
-
 char	**ft_split(char *s, char c)
 {
 	char	**result;
@@ -81,17 +86,9 @@ char	**ft_split(char *s, char c)
 			i++;
 		end = i;
 		if (end > start)
-		{
-			result[re] = ft_substr(s, start, end - start);
-			if (!result[re])
-			{
-				free_all(result, re - 1);
-				return (NULL);
-			}
-			re++;
-		}
+			result[re++] = ft_substr(s, start, end - start);
 	}
+	free(s);
 	result[re] = (NULL);
 	return (result);
 }
-
