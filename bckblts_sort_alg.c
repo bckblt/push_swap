@@ -6,13 +6,13 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:04 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 18:48:08 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:02:57 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	index_max(t_list **stack_a, t_list **stack_b, int max, int min)
+static int	index_max(t_list **stack_a, t_list **stack_b, int max, int min)
 {
 	while ((*stack_a)->index + 1 != (*stack_a)->next->index)
 	{
@@ -34,16 +34,16 @@ int	index_max(t_list **stack_a, t_list **stack_b, int max, int min)
 	return (max);
 }
 
-void	index_tmp_max(t_list **stack_a, t_list **stack_b, int tmp_max)
+static void	index_tmp_max(t_list **stack_a, t_list **stack_b, int tmp_max)
 {
 	if ((tmp_max == 3) && !((*stack_a)->index - 2 == (*stack_a)->next->index))
 	{
 		ft_actions(stack_a, stack_b, "sa");
 		if (ft_serial(stack_a))
 		{
-			if(!(*stack_b))
-				exit(1);
-			else if(ft_serial(stack_a) && ft_revserial(stack_b))
+			if (!(*stack_b))
+				exit(0);
+			else if (ft_serial(stack_a) && ft_revserial(stack_b))
 			{
 				while ((*stack_b))
 					ft_actions(stack_a, stack_b, "pa");
@@ -60,7 +60,7 @@ void	index_tmp_max(t_list **stack_a, t_list **stack_b, int tmp_max)
 		ft_actions(stack_a, stack_b, "rra");
 }
 
-int	index_min(t_list **stack_a, t_list **stack_b, int min)
+static int	index_min(t_list **stack_a, t_list **stack_b, int min)
 {
 	ft_actions(stack_a, stack_b, "pb");
 	if (ft_serial(stack_a) && ft_revserial(stack_b))

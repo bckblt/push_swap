@@ -6,13 +6,13 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:19 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 12:28:45 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 09:28:41 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_bits(t_list **stack)
+static int	max_bits(t_list **stack)
 {
 	t_list	*head;
 	int		max;
@@ -34,7 +34,7 @@ int	max_bits(t_list **stack)
 	return (max_bits);
 }
 
-void	ft_radix_sort(t_list **stack_a, t_list **stack_b, int size)
+static void	ft_radix_sort(t_list **stack_a, t_list **stack_b, int size)
 {
 	int	i;
 	int	j;

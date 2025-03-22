@@ -6,7 +6,7 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:25 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 13:30:04 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:37:38 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,33 @@ int	error_ft(char *str)
 	write (2, "Error\n", 6);
 	free(str);
 	return (0);
+}
+
+int	ft_stclen(t_list **stack)
+{
+	int		i;
+	t_list	*tmp;
+
+	tmp = (*stack);
+	i = 0;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+void	ft_stctoarr(t_list **stack, int *arr)
+{
+	int		i;
+	t_list	*tmp;
+
+	tmp = (*stack);
+	i = 0;
+	while (tmp)
+	{
+		arr[i++] = tmp->data;
+		tmp = tmp->next;
+	}
 }

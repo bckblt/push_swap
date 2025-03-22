@@ -6,13 +6,13 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:12 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 21:07:53 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:35:44 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atoi(const char *str)
+static long	ft_atoi(const char *str)
 {
 	int		i;
 	int		c;
@@ -57,7 +57,7 @@ static void	ft_list_handle(t_list **stack, char **str, t_list *current)
 			return ;
 		}
 		new_node->data = ft_atoi(str[i]);
-		new_node->index = i + 1;
+		new_node->index = -1;
 		new_node->next = NULL;
 		current->next = new_node;
 		current = current->next;
@@ -65,7 +65,7 @@ static void	ft_list_handle(t_list **stack, char **str, t_list *current)
 	}
 }
 
-t_list	**ft_list_doldur(t_list **stack, char **str)
+t_list	**ft_list_fill(t_list **stack, char **str)
 {
 	t_list	*current;
 
@@ -78,7 +78,7 @@ t_list	**ft_list_doldur(t_list **stack, char **str)
 			return (NULL);
 		}
 		(*stack)->data = ft_atoi(str[0]);
-		(*stack)->index = 1;
+		(*stack)->index = -1;
 		(*stack)->next = NULL;
 		current = *stack;
 	}
@@ -87,71 +87,34 @@ t_list	**ft_list_doldur(t_list **stack, char **str)
 	return (stack);
 }
 
-static void	index_utils(t_list **stack, int size, int *arr)
+static t_list	*find_min(t_list **stack_a)
 {
-	int		i;
-	int		j;
-	int		x;
-	t_list	*tmp;
+	t_list	*head;
+	t_list	*min;
 
-	tmp = (*stack);
-	i = 0;
-	while (tmp)
+	min = NULL;
+	head = *stack_a;
+	while (head)
 	{
-		arr[i++] = tmp->data;
-		tmp = tmp->next;
+		if ((min == NULL || head->data < min->data) && head->index == -1)
+			min = head;
+		head = head->next;
 	}
-	i = 0;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arr[i] > arr[j])
-			{
-				x = arr[i];
-				arr[i] = arr[j];
-				arr[j] = x;
-			}
-			j++;
-		}
-		i++;
-	}
+	return (min);
 }
 
 int	index_cfg(t_list **stack)
 {
-	t_list	*tmp;
-	int		*arr;
-	int		size;
+	t_list	*head;
 	int		i;
 
-	size = 0;
-	tmp = (*stack);
-	while (tmp)
-	{
-		size++;
-		tmp = tmp->next;
+	i = 1;
+	head = find_min(stack);
+	while (head)
+	{	
+		head->index = i;
+		i++;
+		head = find_min(stack);
 	}
-	arr = malloc(sizeof(int) * size);
-	if (!arr)
-		return (0);
-	index_utils(stack, size, arr);
-	tmp = (*stack);
-	while (tmp)
-	{
-		i = 0;
-		while (i < size)
-		{
-			if (arr[i] == tmp->data)
-			{
-				tmp->index = i + 1;
-				break ;
-			}
-			i++;
-		}
-		tmp = tmp->next;
-	}
-	free(arr);
-	return (size);
+	return (ft_stclen(stack));
 }

@@ -6,7 +6,7 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:27 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 12:50:40 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:40:26 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	count_word(char *a, char b)
 	return (word);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*a;
 	size_t	i;
@@ -91,4 +91,25 @@ char	**ft_split(char *s, char c)
 	free(s);
 	result[re] = (NULL);
 	return (result);
+}
+
+void	ft_wrerror(t_list **stack_a, t_list **stack_b)
+{
+	write(2, "Error\n", 6);
+	if (stack_a || stack_b)
+		ft_freed(stack_a, stack_b);
+	exit (1);
+}
+
+void	write_error(int ac, char **av)
+{
+	if (ac == 1 || !av[1])
+		exit (1);
+	if (av[1][0] == '\0')
+		ft_wrerror (NULL, NULL);
+	if (av[1][0] == ' ' && av[1][1] == '\0')
+	{
+		write(1, "Error\n", 6);
+		exit (1);
+	}
 }

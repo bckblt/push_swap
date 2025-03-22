@@ -6,7 +6,7 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:06 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 19:45:26 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 14:12:48 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ int	ft_intchk(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == ' ' && str[i + 1] && !(str[i + 1] >= '0' && str[i + 1] <= '9') &&
-			str[i + 1] != '-' && str[i + 1] != '+')
+		if (str[i] == ' ' && str[i + 1] && !(str[i + 1] >= '0'
+				&& str[i + 1] <= '9') && str[i + 1] != '-' && str[i + 1] != '+')
 			return (error_ft(str));
-		if (str[i] == '-' && (!str[i + 1] || !(str[i + 1] >= '0' && str[i + 1] <= '9')))
+		if (str[i] == '-'
+			&& (!str[i + 1] || !(str[i + 1] >= '0' && str[i + 1] <= '9')))
 			return (error_ft(str));
-		if (str[i] == '+' && (!str[i + 1] || !(str[i + 1] >= '0' && str[i + 1] <= '9')))
+		if (str[i] == '+'
+			&& (!str[i + 1] || !(str[i + 1] >= '0' && str[i + 1] <= '9')))
 			return (error_ft(str));
-		if (str[i] != 32 && !(str[i] <= '9' && str[i] >= '0') && str[i] != '-' && str[i] != '+')
+		if (str[i] != 32 && !(str[i] <= '9' && str[i] >= '0')
+			&& str[i] != '-' && str[i] != '+')
 			return (error_ft(str));
 		i++;
 	}

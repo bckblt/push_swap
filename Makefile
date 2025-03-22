@@ -4,7 +4,7 @@ SRCS    = push_swap.c utils.c ft_check.c list_cfg.c actions.c stcmove.c bckblts_
 
 OBJS = ${SRCS:.c=.o}
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf

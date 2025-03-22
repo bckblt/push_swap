@@ -6,13 +6,13 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:01:51 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 10:03:13 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 09:31:21 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_verstree(t_list **stack_a, t_list **stack_b, char *actions)
+static void	ft_verstree(t_list **stack_a, t_list **stack_b, char *actions)
 {
 	if (ft_strcmp(actions, "rr") == 0)
 	{
@@ -38,7 +38,7 @@ void	ft_verstree(t_list **stack_a, t_list **stack_b, char *actions)
 	}
 }
 
-void	ft_verstwo(t_list **stack_a, t_list **stack_b, char *actions)
+static void	ft_verstwo(t_list **stack_a, t_list **stack_b, char *actions)
 {
 	if (ft_strcmp(actions, "pa") == 0)
 	{

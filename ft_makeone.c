@@ -6,13 +6,13 @@
 /*   By: bakarabu <bakarabu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:02:09 by bakarabu          #+#    #+#             */
-/*   Updated: 2025/03/20 12:55:25 by bakarabu         ###   ########.fr       */
+/*   Updated: 2025/03/22 14:02:20 by bakarabu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	total_size(char **av)
+static int	total_size(char **av)
 {
 	int		i;
 	int		j;
@@ -55,8 +55,7 @@ char	*ft_makeone(char **av)
 			res[x++] = av[i][j++];
 		i++;
 		if (av[i])
-			res[x] = ' ';
-		x++;
+			res[x++] = ' ';
 	}
 	res[x] = '\0';
 	return (res);
